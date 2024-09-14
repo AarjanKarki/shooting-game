@@ -1,0 +1,27 @@
+import pgzrun, random
+WIDTH=500
+HEIGHT=500
+alien=Actor('alien6')
+TITLE='Shooting Game'
+message=''
+score=0
+def draw():
+    screen.clear()
+    screen.fill(color=(128,0,0))
+    screen.draw.text(message,center=(250,10))
+    #screen.draw.text(score,(100,10))
+    alien.draw()
+def place_alien():
+    alien.x=random.randint(75,WIDTH-75)
+    alien.y=random.randint(75,WIDTH-75)
+def on_mouse_down(pos):
+    global message, score
+    if alien.collidepoint(pos):
+        message='good shot'
+        score=score+1
+        print(score)
+        place_alien()
+    else:
+        message='try again'
+
+pgzrun.go()
